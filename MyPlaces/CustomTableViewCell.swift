@@ -14,4 +14,5 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     
+    
 }
