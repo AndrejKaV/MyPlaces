@@ -32,14 +32,15 @@ class NewPlaceViewController: UITableViewController {
             }
             
             camera.setValue(cameraIcon, forKey: "image")
-            camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAligment")
+            camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
             let photo = UIAlertAction(title: "Photo", style: .default) { _ in
                 self.chooseImagePicker(source: .photoLibrary)
             }
+          
             photo.setValue(photoIcon, forKey: "image")
-            photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAligment")
-            
+            photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+           
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
             
             actionSheet.addAction(camera)
