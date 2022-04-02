@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UITableViewController {
  
-    var places = Place.getPlaces()
+   // var places = Place.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,12 +17,12 @@ class MainViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+/*
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return places.count
     }
-
-   
+*/
+  /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         
@@ -45,7 +45,7 @@ class MainViewController: UITableViewController {
  
         return cell
     }
-    
+    */
  
     /*
     // MARK: - Navigation
@@ -62,7 +62,7 @@ class MainViewController: UITableViewController {
         guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
         
         newPlaceVC.saveNewPlace()
-        places.append(newPlaceVC.newPlace!)
+       // places.append(newPlaceVC.newPlace!)
         tableView.reloadData()
     }
 
