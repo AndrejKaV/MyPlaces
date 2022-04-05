@@ -68,6 +68,7 @@
                                     <outlet property="locationLabel" destination="TIF-yA-0zW" id="dbw-If-tfB"/>
                                     <outlet property="nameLabel" destination="DAy-P4-FDR" id="Mlh-2c-tH1"/>
                                     <outlet property="typeLabel" destination="y2r-uk-k69" id="dWP-Yj-jgz"/>
+                                    <segue destination="YxW-Pu-yJt" kind="show" identifier="showDetail" id="u1r-lo-Afy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -76,7 +77,7 @@
                             <outlet property="delegate" destination="JTe-aI-Z4Q" id="kG1-Wt-5hL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Places" id="VZ4-sp-8hJ">
+                    <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="VZ4-sp-8hJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="EsO-4B-mjM">
                             <connections>
                                 <segue destination="YBP-uW-ts9" kind="presentation" modalTransitionStyle="crossDissolve" id="3d6-EA-9Ey"/>
@@ -91,7 +92,7 @@
         <!--New Place-->
         <scene sceneID="cHI-P1-Hbj">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="YxW-Pu-yJt" customClass="NewPlaceViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NewPlaceViewController" modalPresentationStyle="fullScreen" id="YxW-Pu-yJt" customClass="NewPlaceViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="MHk-gl-Jdu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,15 +109,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="boi-EK-Tl7">
-                                                    <rect key="frame" x="20" y="11" width="374" height="228"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="boi-EK-Tl7" firstAttribute="trailing" secondItem="RZw-cp-AKa" secondAttribute="trailingMargin" id="9gK-7B-c71"/>
-                                                <constraint firstItem="boi-EK-Tl7" firstAttribute="top" secondItem="RZw-cp-AKa" secondAttribute="topMargin" id="Q58-71-xq5"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="boi-EK-Tl7" secondAttribute="bottom" id="a1T-aw-i6s"/>
-                                                <constraint firstItem="boi-EK-Tl7" firstAttribute="leading" secondItem="RZw-cp-AKa" secondAttribute="leadingMargin" id="dOl-bE-eot"/>
+                                                <constraint firstItem="boi-EK-Tl7" firstAttribute="leading" secondItem="RZw-cp-AKa" secondAttribute="leading" id="7nl-of-jcb"/>
+                                                <constraint firstAttribute="bottom" secondItem="boi-EK-Tl7" secondAttribute="bottom" id="W07-Ax-Esu"/>
+                                                <constraint firstItem="boi-EK-Tl7" firstAttribute="top" secondItem="RZw-cp-AKa" secondAttribute="top" id="ko4-Ms-Rf0"/>
+                                                <constraint firstAttribute="trailing" secondItem="boi-EK-Tl7" secondAttribute="trailing" id="lUR-kM-wOG"/>
+                                                <constraint firstItem="boi-EK-Tl7" firstAttribute="width" secondItem="RZw-cp-AKa" secondAttribute="width" id="poa-Wv-k6f"/>
+                                                <constraint firstItem="boi-EK-Tl7" firstAttribute="height" secondItem="RZw-cp-AKa" secondAttribute="height" id="ul5-f8-gci"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -242,7 +245,7 @@
                             <outlet property="delegate" destination="YxW-Pu-yJt" id="RjT-fc-OFN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Place" id="zLJ-rI-LIw">
+                    <navigationItem key="navigationItem" title="New Place" largeTitleDisplayMode="always" id="zLJ-rI-LIw">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rpp-lh-2KF">
                             <connections>
                                 <action selector="cancelAction:" destination="YxW-Pu-yJt" id="baz-Nl-TG6"/>
@@ -265,14 +268,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NYb-L2-sYk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="BdY-a5-L3J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="49"/>
+            <point key="canvasLocation" x="1911.594202898551" y="48.883928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bY2-Hc-Pux">
             <objects>
                 <navigationController id="4IH-2l-NJ6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bx1-ad-Eoc">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Bx1-ad-Eoc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="24"/>
@@ -305,6 +308,9 @@
             <point key="canvasLocation" x="1148" y="49"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="u1r-lo-Afy"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Photo" width="195" height="196"/>
         <systemColor name="systemBackgroundColor">
