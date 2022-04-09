@@ -194,6 +194,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="RatingControl" destination="pvM-nx-dX9" id="ibY-iX-QDD"/>
                         <outlet property="placeImage" destination="boi-EK-Tl7" id="QKh-KZ-LSp"/>
                         <outlet property="placeLocation" destination="io9-02-IMZ" id="NJc-a8-wm0"/>
                         <outlet property="placeName" destination="RV1-K4-oCK" id="F0j-W2-tJW"/>
