@@ -77,6 +77,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // MARK: Table view delegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     private func deleteRow(rowIndexPathAt indexPath: IndexPath) -> UIContextualAction {
         let place = places[indexPath.row]
         let action = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, _) in
