@@ -30,14 +30,28 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="boi-EK-Tl7">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wak-E7-pgU">
+                                                    <rect key="frame" x="344" y="189" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="6f8-C8-jfp"/>
+                                                        <constraint firstAttribute="height" constant="50" id="C6g-fB-DDw"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="map"/>
+                                                    <connections>
+                                                        <segue destination="Dj9-Ol-Fw5" kind="presentation" identifier="showMap" id="3MY-0Z-xrQ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="Wak-E7-pgU" firstAttribute="bottom" secondItem="RZw-cp-AKa" secondAttribute="bottomMargin" id="44R-TL-Dxm"/>
                                                 <constraint firstItem="boi-EK-Tl7" firstAttribute="leading" secondItem="RZw-cp-AKa" secondAttribute="leading" id="7nl-of-jcb"/>
                                                 <constraint firstAttribute="bottom" secondItem="boi-EK-Tl7" secondAttribute="bottom" id="W07-Ax-Esu"/>
                                                 <constraint firstItem="boi-EK-Tl7" firstAttribute="top" secondItem="RZw-cp-AKa" secondAttribute="top" id="ko4-Ms-Rf0"/>
                                                 <constraint firstAttribute="trailing" secondItem="boi-EK-Tl7" secondAttribute="trailing" id="lUR-kM-wOG"/>
                                                 <constraint firstItem="boi-EK-Tl7" firstAttribute="width" secondItem="RZw-cp-AKa" secondAttribute="width" id="poa-Wv-k6f"/>
+                                                <constraint firstItem="Wak-E7-pgU" firstAttribute="trailing" secondItem="RZw-cp-AKa" secondAttribute="trailingMargin" id="rAm-zR-l5N"/>
                                                 <constraint firstItem="boi-EK-Tl7" firstAttribute="height" secondItem="RZw-cp-AKa" secondAttribute="height" id="ul5-f8-gci"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -206,6 +220,47 @@
                 <exit id="BdY-a5-L3J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1242.0289855072465" y="51.5625"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="ge3-sN-aEN">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Dj9-Ol-Fw5" customClass="MapViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vzs-wP-mBi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HxW-zG-GPs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nel-b3-hlQ">
+                                <rect key="frame" x="344" y="84" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="AXo-9h-3L3"/>
+                                    <constraint firstAttribute="width" constant="30" id="KBF-rW-smz"/>
+                                </constraints>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark.app.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="closeVC" destination="Dj9-Ol-Fw5" eventType="touchUpInside" id="8cj-FM-Lwu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dJk-c9-RZH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dJk-c9-RZH" firstAttribute="trailing" secondItem="Nel-b3-hlQ" secondAttribute="trailing" constant="40" id="5B3-li-SRQ"/>
+                            <constraint firstItem="Nel-b3-hlQ" firstAttribute="top" secondItem="dJk-c9-RZH" secondAttribute="top" constant="40" id="GwE-zp-dFV"/>
+                            <constraint firstAttribute="bottom" secondItem="HxW-zG-GPs" secondAttribute="bottom" id="WH5-Zm-qre"/>
+                            <constraint firstItem="HxW-zG-GPs" firstAttribute="leading" secondItem="dJk-c9-RZH" secondAttribute="leading" id="XsC-gq-SfM"/>
+                            <constraint firstItem="HxW-zG-GPs" firstAttribute="trailing" secondItem="dJk-c9-RZH" secondAttribute="trailing" id="aap-Nw-TDJ"/>
+                            <constraint firstItem="HxW-zG-GPs" firstAttribute="top" secondItem="Vzs-wP-mBi" secondAttribute="top" id="kYN-Ai-BDL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Wh-FY-cmx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2008.6956521739132" y="48.883928571428569"/>
         </scene>
         <!--My Places-->
         <scene sceneID="OyO-H9-yQn">
@@ -378,6 +433,9 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="j2j-um-5Pa">
+            <size key="intrinsicContentSize" width="90" height="16"/>
+        </designable>
         <designable name="pvM-nx-dX9">
             <size key="intrinsicContentSize" width="252" height="44"/>
         </designable>
@@ -390,6 +448,8 @@
         <image name="Photo" width="195" height="196"/>
         <image name="emptyStar" width="255" height="256"/>
         <image name="filledStar" width="237.5" height="238"/>
+        <image name="map" width="50" height="50"/>
+        <image name="xmark.app.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
