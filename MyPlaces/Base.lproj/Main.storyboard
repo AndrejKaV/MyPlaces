@@ -257,6 +257,9 @@
                             <constraint firstItem="HxW-zG-GPs" firstAttribute="top" secondItem="Vzs-wP-mBi" secondAttribute="top" id="kYN-Ai-BDL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="HxW-zG-GPs" id="CCL-NQ-i8c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Wh-FY-cmx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
