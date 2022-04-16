@@ -38,6 +38,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
+        searchController.isActive = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
@@ -81,10 +82,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             guard let self = self else {return}
             let alert = UIAlertController(title: "Are you sure?", message: "Delete \(place.name)?", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default) { (_) in
-                            //self.numberOfRows -= 1
+                            
                             StorageManager.deleteObject(place)
                             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                            //self.tableView.reloadData()
+                             
             }
             let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
                 self.tableView.reloadData()
@@ -100,14 +101,19 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let place = places[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Edit") { [weak self](_, _, _) in
             let alert = UIAlertController(title: "Do you want to edit \(place.name)?", message: "You could make some editing of this stuff", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Ok", style: .default) { (_) in
-                //setupEditScreen()
-               
+
+            let ok = UIAlertAction(title: "Ok", style: .default) { action in
+                 
+                let sender: Place = place 
+                
+                self?.performSegue(withIdentifier: "showDetail", sender: sender)
+                
             }
             let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (_) in
                 self?.tableView.reloadData()
             }
             alert.addAction(ok)
+            
             alert.addAction(cancel)
              
             self?.present(alert, animated: true)
@@ -115,10 +121,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return action
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//       let edit = self.editRow(rowIndexPathAt: indexPath)
+        let edit = self.editRow(rowIndexPathAt: indexPath)
         let delete = self.deleteRow(rowIndexPathAt: indexPath)
-//         let swipe = UISwipeActionsConfiguration(actions: [delete, edit])
-         let swipe = UISwipeActionsConfiguration(actions: [delete])
+         let swipe = UISwipeActionsConfiguration(actions: [delete, edit])
+//         let swipe = UISwipeActionsConfiguration(actions: [delete])
         return swipe
     }
 //    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -140,10 +146,25 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
+            
+            //print("\(sender!)")
+            if sender is Place {
+               
+                let place = sender as! Place
+                let newPlaceVC = segue.destination as! NewPlaceViewController
+                newPlaceVC.currentPlace = place
+            }
+            
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
             let newPlaceVC = segue.destination as! NewPlaceViewController
             newPlaceVC.currentPlace = place
+            
+            
+            
+//            let object = sender as! [String: Any?]
+//            secondView.name = object[“name”] as? String
+//            secondView.id = object[“id”] as? Int
         }
     }
     
@@ -187,10 +208,10 @@ extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
-    
+
     private func filterContentForSearchText(_ searchText: String) {
         filteredPlaces = places.filter("name CONTAINS[c] %@ OR location CONTAINS[c] %@", searchText, searchText)
-        
+
         tableView.reloadData()
     }
 }

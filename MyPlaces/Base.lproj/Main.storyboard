@@ -31,9 +31,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wak-E7-pgU">
-                                                    <rect key="frame" x="344" y="189" width="50" height="50"/>
+                                                    <rect key="frame" x="320" y="189" width="74" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="6f8-C8-jfp"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="6f8-C8-jfp"/>
                                                         <constraint firstAttribute="height" constant="50" id="C6g-fB-DDw"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
@@ -45,6 +45,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="Wak-E7-pgU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="RZw-cp-AKa" secondAttribute="leading" constant="20" symbolic="YES" id="0fn-Eu-7Hq"/>
                                                 <constraint firstItem="Wak-E7-pgU" firstAttribute="bottom" secondItem="RZw-cp-AKa" secondAttribute="bottomMargin" id="44R-TL-Dxm"/>
                                                 <constraint firstItem="boi-EK-Tl7" firstAttribute="leading" secondItem="RZw-cp-AKa" secondAttribute="leading" id="7nl-of-jcb"/>
                                                 <constraint firstAttribute="bottom" secondItem="boi-EK-Tl7" secondAttribute="bottom" id="W07-Ax-Esu"/>
@@ -233,10 +234,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nel-b3-hlQ">
-                                <rect key="frame" x="344" y="84" width="30" height="30"/>
+                                <rect key="frame" x="329" y="84" width="45" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AXo-9h-3L3"/>
-                                    <constraint firstAttribute="width" constant="30" id="KBF-rW-smz"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="KBF-rW-smz"/>
                                 </constraints>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -254,6 +255,7 @@
                             <constraint firstAttribute="bottom" secondItem="HxW-zG-GPs" secondAttribute="bottom" id="WH5-Zm-qre"/>
                             <constraint firstItem="HxW-zG-GPs" firstAttribute="leading" secondItem="dJk-c9-RZH" secondAttribute="leading" id="XsC-gq-SfM"/>
                             <constraint firstItem="HxW-zG-GPs" firstAttribute="trailing" secondItem="dJk-c9-RZH" secondAttribute="trailing" id="aap-Nw-TDJ"/>
+                            <constraint firstItem="Nel-b3-hlQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dJk-c9-RZH" secondAttribute="leading" symbolic="YES" id="aiM-zW-W1Y"/>
                             <constraint firstItem="HxW-zG-GPs" firstAttribute="top" secondItem="Vzs-wP-mBi" secondAttribute="top" id="kYN-Ai-BDL"/>
                         </constraints>
                     </view>
@@ -357,7 +359,10 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oyZ-K7-3LD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="SKo-XG-1r1"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Date"/>
                                     <segment title="Name"/>
@@ -370,9 +375,9 @@
                         <viewLayoutGuide key="safeArea" id="wAW-aG-GLU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="oyZ-K7-3LD" firstAttribute="leading" secondItem="wAW-aG-GLU" secondAttribute="leading" id="2Vv-pI-gHu"/>
-                            <constraint firstItem="oyZ-K7-3LD" firstAttribute="top" secondItem="wAW-aG-GLU" secondAttribute="top" id="Gef-8q-Tmb"/>
-                            <constraint firstItem="wAW-aG-GLU" firstAttribute="trailing" secondItem="oyZ-K7-3LD" secondAttribute="trailing" id="vRC-DI-3go"/>
+                            <constraint firstItem="oyZ-K7-3LD" firstAttribute="top" secondItem="wAW-aG-GLU" secondAttribute="top" id="eAV-bW-BlX"/>
+                            <constraint firstItem="oyZ-K7-3LD" firstAttribute="leading" secondItem="wAW-aG-GLU" secondAttribute="leading" id="eoQ-wc-2BS"/>
+                            <constraint firstItem="oyZ-K7-3LD" firstAttribute="trailing" secondItem="wAW-aG-GLU" secondAttribute="trailing" id="gqd-Db-2MW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="gaL-rS-RzP">
