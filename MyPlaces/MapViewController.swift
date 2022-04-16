@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
     var place = Place()
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
+    let regionInKm = 10.0
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -26,7 +27,16 @@ class MapViewController: UIViewController {
  
     }
     
+    @IBAction func centerViewInUserLocation() {
+        
+        if let location = locationManager.location?.coordinate {
+            let span = MKCoordinateSpan(latitudeDelta: mapView.region.span.latitudeDelta*regionInKm, longitudeDelta: mapView.region.span.longitudeDelta*regionInKm)
 
+            let region = MKCoordinateRegion(center: location, span: span)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
     @IBAction func closeVC() {
         dismiss(animated: true)
     }
@@ -64,6 +74,12 @@ class MapViewController: UIViewController {
             checkLocationAuthorization()
         } else {
             //show allert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Location Services are Disable",
+                    message: "To enable it Go to: Setting -> Privacy -> Location Services and turn On"
+                )
+            }
         }
     }
     
@@ -80,17 +96,38 @@ class MapViewController: UIViewController {
             break
         case .denied:
            //Show allert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Your app is not authorized to use location services.",
+                    message: "You cannot change this app’s status, possibly due to active restrictions such as parental controls being in place."
+                )
+            }
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
             //show allert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Your location is not Availeble",
+                    message: "To give permission Go to: Setting -> MyPlaces -> Location"
+                )
+            }
             break
         case .authorizedAlways:
             break
         @unknown default:
             print("New case is available")
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
 extension MapViewController: MKMapViewDelegate {

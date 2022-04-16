@@ -104,7 +104,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             let ok = UIAlertAction(title: "Ok", style: .default) { action in
                  
-                let sender: Place = place 
+                let sender: Place = place
                 
                 self?.performSegue(withIdentifier: "showDetail", sender: sender)
                 
@@ -123,23 +123,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let edit = self.editRow(rowIndexPathAt: indexPath)
         let delete = self.deleteRow(rowIndexPathAt: indexPath)
-         let swipe = UISwipeActionsConfiguration(actions: [delete, edit])
-//         let swipe = UISwipeActionsConfiguration(actions: [delete])
+        let swipe = UISwipeActionsConfiguration(actions: [delete, edit])
         return swipe
     }
-//    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//
-//        let place = places[indexPath.row]
-//        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
-//
-//            StorageManager.deleteObject(place)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//        }
-//
-//        return [deleteAction]
-//    }
-    
-    
+ 
  
     
     // MARK: - Navigation
@@ -147,7 +134,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             
-            //print("\(sender!)")
             if sender is Place {
                
                 let place = sender as! Place
@@ -160,11 +146,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let newPlaceVC = segue.destination as! NewPlaceViewController
             newPlaceVC.currentPlace = place
             
-            
-            
-//            let object = sender as! [String: Any?]
-//            secondView.name = object[“name”] as? String
-//            secondView.id = object[“id”] as? Int
         }
     }
     
