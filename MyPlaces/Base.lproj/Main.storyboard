@@ -310,6 +310,23 @@
                                     <action selector="doneButtonPressed" destination="Dj9-Ol-Fw5" eventType="touchUpInside" id="qw2-87-mcM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ve9-v4-G7Y">
+                                <rect key="frame" x="168.5" y="772" width="77" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="IBj-LB-BBp"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="arrowshape.zigzag.forward" catalog="system" symbolScale="large" renderingMode="template"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                    </preferredSymbolConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="goButtonPressed" destination="Dj9-Ol-Fw5" eventType="touchUpInside" id="XWl-gf-Jbq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dJk-c9-RZH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -320,6 +337,7 @@
                             <constraint firstItem="dJk-c9-RZH" firstAttribute="trailing" secondItem="Nel-b3-hlQ" secondAttribute="trailing" constant="40" id="5B3-li-SRQ"/>
                             <constraint firstItem="dJk-c9-RZH" firstAttribute="trailing" secondItem="6fL-0C-Vzd" secondAttribute="trailing" constant="20" id="5Ch-DW-zxb"/>
                             <constraint firstItem="Nel-b3-hlQ" firstAttribute="top" secondItem="dJk-c9-RZH" secondAttribute="top" constant="40" id="GwE-zp-dFV"/>
+                            <constraint firstItem="dJk-c9-RZH" firstAttribute="bottom" secondItem="Ve9-v4-G7Y" secondAttribute="bottom" constant="40" id="JQM-Yz-F5p"/>
                             <constraint firstItem="uTE-3n-qX2" firstAttribute="centerY" secondItem="Vzs-wP-mBi" secondAttribute="centerY" constant="-20" id="ORo-EC-1d0"/>
                             <constraint firstItem="DWD-QH-M9G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dJk-c9-RZH" secondAttribute="leading" symbolic="YES" id="Tbi-GB-e0B"/>
                             <constraint firstItem="dJk-c9-RZH" firstAttribute="bottom" secondItem="Yj9-Wb-HNs" secondAttribute="bottom" constant="40" id="V7Z-op-NK0"/>
@@ -328,6 +346,7 @@
                             <constraint firstItem="HxW-zG-GPs" firstAttribute="trailing" secondItem="dJk-c9-RZH" secondAttribute="trailing" id="aap-Nw-TDJ"/>
                             <constraint firstItem="Nel-b3-hlQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dJk-c9-RZH" secondAttribute="leading" symbolic="YES" id="aiM-zW-W1Y"/>
                             <constraint firstItem="6fL-0C-Vzd" firstAttribute="top" secondItem="Vzs-wP-mBi" secondAttribute="topMargin" constant="129" id="cGs-vQ-k6z"/>
+                            <constraint firstItem="Ve9-v4-G7Y" firstAttribute="centerX" secondItem="Vzs-wP-mBi" secondAttribute="centerX" id="iSg-Cb-r9V"/>
                             <constraint firstItem="dJk-c9-RZH" firstAttribute="trailing" secondItem="DWD-QH-M9G" secondAttribute="trailing" constant="40" id="jDK-7i-gLp"/>
                             <constraint firstItem="HxW-zG-GPs" firstAttribute="top" secondItem="Vzs-wP-mBi" secondAttribute="top" id="kYN-Ai-BDL"/>
                             <constraint firstItem="Yj9-Wb-HNs" firstAttribute="centerX" secondItem="Vzs-wP-mBi" secondAttribute="centerX" id="nCd-1I-wPz"/>
@@ -336,6 +355,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="6fL-0C-Vzd" id="Uqg-Wa-iNS"/>
                         <outlet property="doneButton" destination="Yj9-Wb-HNs" id="8Q3-We-9eL"/>
+                        <outlet property="goButton" destination="Ve9-v4-G7Y" id="MHF-MF-UOO"/>
                         <outlet property="mapPinImage" destination="uTE-3n-qX2" id="Wf2-Y9-xae"/>
                         <outlet property="mapView" destination="HxW-zG-GPs" id="CCL-NQ-i8c"/>
                     </connections>
@@ -532,6 +552,7 @@
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
+        <image name="arrowshape.zigzag.forward" catalog="system" width="128" height="93"/>
         <image name="emptyStar" width="255" height="256"/>
         <image name="filledStar" width="237.5" height="238"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>
@@ -539,6 +560,9 @@
         <image name="mappin" catalog="system" width="105" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <image name="xmark.app.fill" catalog="system" width="128" height="114"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
