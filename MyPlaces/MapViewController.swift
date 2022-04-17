@@ -15,30 +15,42 @@ class MapViewController: UIViewController {
     var place = Place()
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
-    let regionInKm = 10.0
+    let regionInMeters = 10_000.0
+    var incomeSegueIdentifier = ""
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapPinImage: UIImageView!
+    @IBOutlet weak var adressLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        adressLabel.text = ""
         mapView.delegate = self
-        setupPlaceMark()
+        setupMapView()
         checkLocationServices()
  
     }
     
     @IBAction func centerViewInUserLocation() {
         
-        if let location = locationManager.location?.coordinate {
-            let span = MKCoordinateSpan(latitudeDelta: mapView.region.span.latitudeDelta*regionInKm, longitudeDelta: mapView.region.span.longitudeDelta*regionInKm)
-
-            let region = MKCoordinateRegion(center: location, span: span)
-            mapView.setRegion(region, animated: true)
-        }
+        showUserLocation()
+    }
+    
+    @IBAction func doneButtonPressed() {
     }
     
     @IBAction func closeVC() {
         dismiss(animated: true)
+    }
+    
+    private func setupMapView() {
+        if incomeSegueIdentifier == "showPlace" {
+            setupPlaceMark()
+            mapPinImage.isHidden = true
+            adressLabel.isHidden = true
+            doneButton.isHidden = true
+        }
     }
     
     private func setupPlaceMark() {
@@ -93,6 +105,7 @@ class MapViewController: UIViewController {
         switch manager.authorizationStatus {
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
+            if incomeSegueIdentifier == "getAdress" { showUserLocation() }
             break
         case .denied:
            //Show allert controller
@@ -119,6 +132,22 @@ class MapViewController: UIViewController {
         @unknown default:
             print("New case is available")
         }
+    }
+    
+    private func showUserLocation() {
+        if let location = locationManager.location?.coordinate {
+
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters )
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    private func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
+        
+        return CLLocation(latitude: latitude, longitude: longitude)
     }
     
     private func showAlert(title: String, message: String) {
@@ -152,6 +181,41 @@ extension MapViewController: MKMapViewDelegate {
         
         
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        
+        let center = getCenterLocation(for: mapView)
+        let geocoder = CLGeocoder()
+        
+        geocoder.reverseGeocodeLocation(center) { (placemarks, error) in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let placemarks = placemarks else { return }
+            
+            let placemark = placemarks.first
+            let cityName = placemark?.locality
+            let streetName = placemark?.thoroughfare
+            let buildNumber = placemark?.subThoroughfare
+            
+            DispatchQueue.main.async {
+             
+                if cityName != nil && streetName != nil && buildNumber != nil {
+                    self.adressLabel.text = "\(cityName!), \(streetName!), \(buildNumber!)"
+                } else if cityName != nil && streetName != nil {
+                    self.adressLabel.text = "\(cityName!), \(streetName!)"
+                }else if cityName != nil {
+                    self.adressLabel.text = "\(cityName!)"
+                } else {
+                    self.adressLabel.text = ""
+                }
+               
+            }
+        }
     }
 }
 
