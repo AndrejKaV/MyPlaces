@@ -137,7 +137,7 @@
                                                         <imageReference key="image" image="mappin.and.ellipse" catalog="system" symbolScale="medium" renderingMode="template"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <segue destination="Dj9-Ol-Fw5" kind="presentation" identifier="getAdress" id="YDy-X7-Rqr"/>
+                                                        <segue destination="Dj9-Ol-Fw5" kind="presentation" identifier="getAddress" id="YDy-X7-Rqr"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -334,7 +334,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="adressLabel" destination="6fL-0C-Vzd" id="Uqg-Wa-iNS"/>
+                        <outlet property="addressLabel" destination="6fL-0C-Vzd" id="Uqg-Wa-iNS"/>
                         <outlet property="doneButton" destination="Yj9-Wb-HNs" id="8Q3-We-9eL"/>
                         <outlet property="mapPinImage" destination="uTE-3n-qX2" id="Wf2-Y9-xae"/>
                         <outlet property="mapView" destination="HxW-zG-GPs" id="CCL-NQ-i8c"/>
@@ -526,7 +526,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="3MY-0Z-xrQ"/>
+        <segue reference="YDy-X7-Rqr"/>
         <segue reference="NgT-js-2kR"/>
     </inferredMetricsTieBreakers>
     <resources>
